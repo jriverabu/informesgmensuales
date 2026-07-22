@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Estratégico Meta Ads - G Café</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#F0F9FF',
+                            100: '#E0F2FE',
+                            200: '#BAE6FD',
+                            300: '#7DD3FC',
+                            400: '#38BDF8',
+                            500: '#0EA5E9',
+                            600: '#0284C7',
+                            700: '#0369A1',
+                            800: '#075985',
+                            900: '#0C4A6E',
+                            950: '#082F49',
+                        },
+                        whatsapp: {
+                            light: '#DCF8C6',
+                            DEFAULT: '#25D366',
+                            dark: '#128C7E',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(186, 230, 253, 0.7);
+        }
+        .glass-card-blue {
+            background: linear-gradient(135deg, rgba(240, 249, 255, 0.95) 0%, rgba(224, 242, 254, 0.9) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(125, 211, 252, 0.6);
+        }
+        .metric-badge {
+            transition: all 0.2s ease;
+        }
+        .metric-badge:hover {
+            transform: translateY(-2px);
+        }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; color: black !important; }
+            .glass-card { border: 1px solid #ccc !important; box-shadow: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-brand-50 via-sky-50 to-blue-100 text-brand-900 font-sans antialiased min-h-screen">
+
+    <!-- Header principal -->
+    <header class="bg-brand-900 text-white sticky top-0 z-50 shadow-xl border-b border-brand-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center text-white font-serif font-bold text-2xl shadow-md border-2 border-brand-200">
+                        G
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h1 class="font-serif text-2xl font-bold tracking-tight text-white">G CAFÉ</h1>
+                            <span class="bg-brand-700 text-brand-100 text-xs px-2.5 py-0.5 rounded-full font-medium border border-brand-500">
+                                Informe de Performance Meta Ads
+                            </span>
+                        </div>
+                        <p class="text-xs text-brand-200 mt-0.5">
+                            <i class="fa-regular fa-calendar-alt mr-1"></i> Análisis de Campañas | Leads a WhatsApp
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 no-print">
+                    <button onclick="scrollToSection('guia-diccionario')" class="bg-brand-800 hover:bg-brand-700 text-brand-100 text-xs px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 font-medium border border-brand-600 shadow-sm">
+                        <i class="fa-solid fa-graduation-cap text-sky-300"></i>
+                        <span>Guía de Indicadores</span>
+                    </button>
+                    <button onclick="window.print()" class="bg-brand-500 hover:bg-brand-600 text-white text-xs px-3.5 py-2 rounded-lg transition-colors flex items-center gap-1.5 font-semibold shadow-md">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <span>Imprimir / Exportar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- Banner Explicativo de Resumen -->
+        <section class="glass-card rounded-2xl p-6 shadow-md border-l-8 border-l-brand-500 relative overflow-hidden">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                <div class="space-y-2 max-w-3xl">
+                    <div class="inline-flex items-center gap-2 text-brand-700 text-xs font-bold uppercase tracking-wider bg-brand-100 px-3 py-1 rounded-full border border-brand-200">
+                        <i class="fa-solid fa-bullseye text-brand-600"></i> Objetivo Principal de la Campaña
+                    </div>
+                    <h2 class="text-2xl font-serif font-bold text-brand-950">
+                        Atracción de Clientes Potenciales a WhatsApp para G Café
+                    </h2>
+                    <p class="text-sm text-brand-800 leading-relaxed">
+                        Este informe detalla el rendimiento publicitario de los anuncios de <strong>G Café</strong> en Facebook e Instagram. El objetivo central fue motivar a usuarios locales a iniciar conversaciones directas en WhatsApp para realizar reservaciones, conocer la carta de productos y consultar por promociones o espacios de trabajo.
+                    </p>
+                </div>
+                <div class="bg-gradient-to-br from-white to-sky-100 p-4 rounded-xl border border-brand-300 min-w-[260px] text-center shadow-md">
+                    <span class="text-xs uppercase font-bold text-brand-700 tracking-wider">Anuncio Estrella 🌟</span>
+                    <h3 class="font-bold text-brand-950 text-base mt-1">Soda de frutos rojos</h3>
+                    <div class="text-2xl font-extrabold text-whatsapp-dark mt-1">
+                        $1.881 <span class="text-xs font-normal text-brand-700">COP / cliente</span>
+                    </div>
+                    <p class="text-xs text-brand-700 mt-1">Consiguió 47 conversaciones al costo más bajo de toda la campaña.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tarjetas Metricas Generales (KPIs) -->
+        <section class="space-y-3">
+            <div class="flex items-center justify-between">
+                <h3 class="text-lg font-serif font-bold text-brand-950 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-pie text-brand-600"></i> Resumen General de Resultados
+                </h3>
+                <span class="text-xs text-brand-800 bg-brand-100 px-3 py-1 rounded-full border border-brand-200 font-semibold">
+                    7 Anuncios Analizados
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                
+                <!-- KPI 1: Inversion Total -->
+                <div class="glass-card rounded-xl p-5 shadow-sm border border-brand-200 hover:shadow-md transition-shadow relative group">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs font-semibold text-brand-600 uppercase tracking-wider">Inversión Total</p>
+                            <h4 class="text-2xl font-extrabold text-brand-950 mt-1">$825.823 COP</h4>
+                        </div>
+                        <div class="w-10 h-10 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                        </div>
+                    </div>
+                    <p class="text-xs text-brand-700 mt-3 pt-2 border-t border-brand-100 flex items-center justify-between">
+                        <span>Importe gastado acumulado</span>
+                        <button onclick="toggleTooltip('kpi-spend-info')" class="text-brand-500 hover:text-brand-800"><i class="fa-solid fa-circle-info"></i></button>
+                    </p>
+                    <div id="kpi-spend-info" class="hidden text-xs bg-brand-900 text-white p-2.5 rounded-lg mt-2 shadow-lg">
+                        <strong>¿Qué es?</strong> Presupuesto total consumido por Meta Ads en los 7 anuncios ejecutados para la marca G Café.
+                    </div>
+                </div>
+
+                <!-- KPI 2: Conversaciones WhatsApp -->
+                <div class="glass-card rounded-xl p-5 shadow-sm border border-whatsapp/30 hover:shadow-md transition-shadow relative bg-gradient-to-br from-white via-emerald-50/20 to-sky-50">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs font-semibold text-whatsapp-dark uppercase tracking-wider">Conversaciones Iniciadas</p>
+                            <h4 class="text-2xl font-extrabold text-whatsapp-dark mt-1">241 WhatsApps</h4>
+                        </div>
+                        <div class="w-10 h-10 rounded-lg bg-whatsapp text-white flex items-center justify-center font-bold text-lg shadow-md">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                    </div>
+                    <p class="text-xs text-brand-700 mt-3 pt-2 border-t border-brand-100 flex items-center justify-between">
+                        <span>Clientes potenciales atraídos</span>
+                        <button onclick="toggleTooltip('kpi-results-info')" class="text-whatsapp-dark hover:text-green-800"><i class="fa-solid fa-circle-info"></i></button>
+                    </p>
+                    <div id="kpi-results-info" class="hidden text-xs bg-brand-900 text-white p-2.5 rounded-lg mt-2 shadow-lg">
+                        <strong>¿Qué es?</strong> Número de personas únicas que hicieron clic en la publicidad e iniciaron un chat en el WhatsApp de G Café.
+                    </div>
+                </div>
+
+                <!-- KPI 3: Costo por Conversación Promedio -->
+                <div class="glass-card rounded-xl p-5 shadow-sm border border-brand-200 hover:shadow-md transition-shadow relative">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs font-semibold text-brand-600 uppercase tracking-wider">Costo Por WhatsApp (Prom.)</p>
+                            <h4 class="text-2xl font-extrabold text-brand-950 mt-1">$3.427 COP</h4>
+                        </div>
+                        <div class="w-10 h-10 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                    </div>
+                    <p class="text-xs text-brand-700 mt-3 pt-2 border-t border-brand-100 flex items-center justify-between">
+                        <span>Inversión / Resultados</span>
+                        <button onclick="toggleTooltip('kpi-cpr-info')" class="text-brand-500 hover:text-brand-800"><i class="fa-solid fa-circle-info"></i></button>
+                    </p>
+                    <div id="kpi-cpr-info" class="hidden text-xs bg-brand-900 text-white p-2.5 rounded-lg mt-2 shadow-lg">
+                        <strong>¿Qué es?</strong> Lo que le costó en promedio a G Café que un cliente iniciara chat. Va desde $1.881 COP (Sodas) hasta $5.009 COP (Espacio de trabajo).
+                    </div>
+                </div>
+
+                <!-- KPI 4: Impresiones -->
+                <div class="glass-card rounded-xl p-5 shadow-sm border border-brand-200 hover:shadow-md transition-shadow relative">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs font-semibold text-brand-600 uppercase tracking-wider">Impresiones Totales</p>
+                            <h4 class="text-2xl font-extrabold text-brand-950 mt-1">106.377</h4>
+                        </div>
+                        <div class="w-10 h-10 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                    </div>
+                    <p class="text-xs text-brand-700 mt-3 pt-2 border-t border-brand-100 flex items-center justify-between">
+                        <span>Veces que se mostró el anuncio</span>
+                        <button onclick="toggleTooltip('kpi-imp-info')" class="text-brand-500 hover:text-brand-800"><i class="fa-solid fa-circle-info"></i></button>
+                    </p>
+                    <div id="kpi-imp-info" class="hidden text-xs bg-brand-900 text-white p-2.5 rounded-lg mt-2 shadow-lg">
+                        <strong>¿Qué es?</strong> Cantidad total de veces que las piezas publicitarias aparecieron en las pantallas de usuarios de Facebook o Instagram.
+                    </div>
+                </div>
+
+                <!-- KPI 5: Alcance -->
+                <div class="glass-card rounded-xl p-5 shadow-sm border border-brand-200 hover:shadow-md transition-shadow relative">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs font-semibold text-brand-600 uppercase tracking-wider">Alcance Sumado</p>
+                            <h4 class="text-2xl font-extrabold text-brand-950 mt-1">52.051</h4>
+                        </div>
+                        <div class="w-10 h-10 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                    </div>
+                    <p class="text-xs text-brand-700 mt-3 pt-2 border-t border-brand-100 flex items-center justify-between">
+                        <span>Personas únicas alcanzadas</span>
+                        <button onclick="toggleTooltip('kpi-reach-info')" class="text-brand-500 hover:text-brand-800"><i class="fa-solid fa-circle-info"></i></button>
+                    </p>
+                    <div id="kpi-reach-info" class="hidden text-xs bg-brand-900 text-white p-2.5 rounded-lg mt-2 shadow-lg">
+                        <strong>¿Qué es?</strong> Número de personas individuales que vieron al menos una vez alguno de los anuncios durante el periodo.
+                    </div>
+                </div>
+
+                <!-- KPI 6: Frecuencia Promedio -->
+                <div class="glass-card rounded-xl p-5 shadow-sm border border-brand-200 hover:shadow-md transition-shadow relative">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs font-semibold text-brand-600 uppercase tracking-wider">Frecuencia Promedio</p>
+                            <h4 class="text-2xl font-extrabold text-brand-950 mt-1">2,04x</h4>
+                        </div>
+                        <div class="w-10 h-10 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-rotate-right"></i>
+                        </div>
+                    </div>
+                    <p class="text-xs text-brand-700 mt-3 pt-2 border-t border-brand-100 flex items-center justify-between">
+                        <span>Veces vistas por persona</span>
+                        <button onclick="toggleTooltip('kpi-freq-info')" class="text-brand-500 hover:text-brand-800"><i class="fa-solid fa-circle-info"></i></button>
+                    </p>
+                    <div id="kpi-freq-info" class="hidden text-xs bg-brand-900 text-white p-2.5 rounded-lg mt-2 shadow-lg">
+                        <strong>¿Qué es?</strong> Promedio de veces que una misma persona vio el anuncio (Impresiones ÷ Alcance). Una frecuencia alrededor de 2x es óptima para generar recordación sin saturar al usuario.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN EDUCACIONAL Y PEDAGÓGICA SOBRE INDICADORES -->
+        <section id="guia-diccionario" class="glass-card-blue rounded-2xl p-6 shadow-md border border-brand-300 space-y-6">
+            <div class="flex items-center gap-3 border-b border-brand-200 pb-4">
+                <div class="w-10 h-10 rounded-full bg-brand-800 text-sky-300 flex items-center justify-center font-bold text-lg shadow-inner">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-serif font-bold text-brand-950">
+                        Guía Explicativa de Indicadores (¿Qué significa cada dato?)
+                    </h3>
+                    <p class="text-xs text-brand-700">
+                        Entiende cada métrica de tu reporte publicitario explicada paso a paso sin modismos técnicos innecesarios.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Metric Card 1 -->
+                <div class="bg-white p-4 rounded-xl border border-brand-200 shadow-sm space-y-2">
+                    <div class="flex items-center gap-2 text-brand-900 font-bold text-sm">
+                        <span class="w-6 h-6 rounded-full bg-brand-100 text-brand-700 text-xs flex items-center justify-center font-bold">1</span>
+                        Resultados
+                    </div>
+                    <p class="text-xs text-brand-800 leading-relaxed">
+                        Es el objetivo principal cumplido. En el caso de G Café, representa el número de personas que iniciaron una conversación en <strong>WhatsApp</strong> tras interactuar con la publicidad.
+                    </p>
+                    <div class="bg-sky-50 p-2 rounded text-[11px] text-brand-900 border border-sky-200 font-medium">
+                        💡 <em>Para G Café:</em> Cada resultado representa una consulta real sobre ubicación, carta, precios o reserva.
+                    </div>
+                </div>
+
+                <!-- Metric Card 2 -->
+                <div class="bg-white p-4 rounded-xl border border-brand-200 shadow-sm space-y-2">
+                    <div class="flex items-center gap-2 text-brand-900 font-bold text-sm">
+                        <span class="w-6 h-6 rounded-full bg-brand-100 text-brand-700 text-xs flex items-center justify-center font-bold">2</span>
+                        Costo por Resultado (CPR)
+                    </div>
+                    <p class="text-xs text-brand-800 leading-relaxed">
+                        Es el dinero promedio invertido para conseguir una conversación de WhatsApp. Se calcula dividiendo el <code>Importe Gastado ÷ Resultados</code>.
+                    </p>
+                    <div class="bg-emerald-50 p-2 rounded text-[11px] text-emerald-900 border border-emerald-200 font-medium">
+                        📉 <em>Regla de Oro:</em> Mientras más bajo sea este número, más rentable y eficiente es tu anuncio.
+                    </div>
+                </div>
+
+                <!-- Metric Card 3 -->
+                <div class="bg-white p-4 rounded-xl border border-brand-200 shadow-sm space-y-2">
+                    <div class="flex items-center gap-2 text-brand-900 font-bold text-sm">
+                        <span class="w-6 h-6 rounded-full bg-brand-100 text-brand-700 text-xs flex items-center justify-center font-bold">3</span>
+                        Importe Gastado (COP)
+                    </div>
+                    <p class="text-xs text-brand-800 leading-relaxed">
+                        La cantidad exacta de dinero consumida por la plataforma Meta (Facebook/Instagram) en un anuncio específico o durante toda la campaña.
+                    </p>
+                    <div class="bg-blue-50 p-2 rounded text-[11px] text-blue-900 border border-blue-200 font-medium">
+                        💰 <em>Control:</em> Nos asegura alineación total con el presupuesto mensual acordado.
+                    </div>
+                </div>
+
+                <!-- Metric Card 4 -->
+                <div class="bg-white p-4 rounded-xl border border-brand-200 shadow-sm space-y-2">
+                    <div class="flex items-center gap-2 text-brand-900 font-bold text-sm">
+                        <span class="w-6 h-6 rounded-full bg-brand-100 text-brand-700 text-xs flex items-center justify-center font-bold">4</span>
+                        Impresiones vs Alcance
+                    </div>
+                    <p class="text-xs text-brand-800 leading-relaxed">
+                        <strong>Alcance:</strong> Cuántas personas distintas vieron el anuncio.<br>
+                        <strong>Impresiones:</strong> Cuántas veces en total se proyectó en pantalla (incluye repetidos).
+                    </p>
+                    <div class="bg-cyan-50 p-2 rounded text-[11px] text-cyan-900 border border-cyan-200 font-medium">
+                        👥 <em>Ejemplo:</em> 10 personas (Alcance) vieron el anuncio 2 veces cada una = 20 Impresiones.
+                    </div>
+                </div>
+
+                <!-- Metric Card 5 -->
+                <div class="bg-white p-4 rounded-xl border border-brand-200 shadow-sm space-y-2">
+                    <div class="flex items-center gap-2 text-brand-900 font-bold text-sm">
+                        <span class="w-6 h-6 rounded-full bg-brand-100 text-brand-700 text-xs flex items-center justify-center font-bold">5</span>
+                        Clasificaciones Diagnósticas Meta
+                    </div>
+                    <p class="text-xs text-brand-800 leading-relaxed">
+                        Evaluaciones de Meta comparando tu anuncio frente a competidores del mismo sector:
+                    </p>
+                    <ul class="text-[11px] text-brand-800 list-disc list-inside space-y-0.5">
+                        <li><strong>Calidad:</strong> Atractivo visual e imagen.</li>
+                        <li><strong>Interacción:</strong> Clics, likes y comentarios.</li>
+                        <li><strong>Conversión:</strong> Facilidad de generar el chat.</li>
+                    </ul>
+                </div>
+
+                <!-- Metric Card 6 -->
+                <div class="bg-white p-4 rounded-xl border border-brand-200 shadow-sm space-y-2">
+                    <div class="flex items-center gap-2 text-brand-900 font-bold text-sm">
+                        <span class="w-6 h-6 rounded-full bg-brand-100 text-brand-700 text-xs flex items-center justify-center font-bold">6</span>
+                        Finalización
+                    </div>
+                    <p class="text-xs text-brand-800 leading-relaxed">
+                        Fecha límite programada en la que concluyó la emisión del anuncio para hacer el corte oficial de medición.
+                    </p>
+                    <div class="bg-sky-50 p-2 rounded text-[11px] text-brand-900 border border-sky-200 font-medium">
+                        📅 Permite evaluar temporadas de consumo y picos de demanda durante el mes.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Visualización Gráfica -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            
+            <!-- Chart 1: WhatsApp Leads por Anuncio -->
+            <div class="glass-card rounded-2xl p-5 shadow-md border border-brand-200 space-y-3">
+                <div class="flex items-center justify-between border-b border-brand-100 pb-3">
+                    <h4 class="font-serif font-bold text-brand-950 text-base flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-whatsapp-dark"></i> Conversaciones WhatsApp por Anuncio
+                    </h4>
+                    <span class="text-xs text-brand-600 font-medium">Volumen de Clientes</span>
+                </div>
+                <div class="relative h-64 w-full">
+                    <canvas id="leadsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart 2: Costo por Resultado (COP) -->
+            <div class="glass-card rounded-2xl p-5 shadow-md border border-brand-200 space-y-3">
+                <div class="flex items-center justify-between border-b border-brand-100 pb-3">
+                    <h4 class="font-serif font-bold text-brand-950 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-hand-holding-dollar text-brand-600"></i> Costo por Conversación (COP)
+                    </h4>
+                    <span class="text-xs text-brand-600 font-medium">Eficiencia Presupuestal</span>
+                </div>
+                <div class="relative h-64 w-full">
+                    <canvas id="costChart"></canvas>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- TABLA DETALLADA DE ANUNCIOS DE G CAFÉ -->
+        <section class="glass-card rounded-2xl p-6 shadow-md border border-brand-300 space-y-4">
+            
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-brand-200 pb-4">
+                <div>
+                    <h3 class="text-xl font-serif font-bold text-brand-950 flex items-center gap-2">
+                        <i class="fa-solid fa-table-list text-brand-600"></i> Tabla Detallada del Rendimiento por Anuncio
+                    </h3>
+                    <p class="text-xs text-brand-700 mt-0.5">
+                        Datos cuantitativos extraídos fielmente del Administrador de Anuncios para G Café.
+                    </p>
+                </div>
+
+                <!-- Botones de Filtro / Orden -->
+                <div class="flex items-center gap-2 flex-wrap no-print">
+                    <input type="text" id="tableSearch" onkeyup="filterTable()" placeholder="Buscar anuncio..." class="text-xs px-3 py-2 rounded-lg border border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white shadow-sm">
+                    <select id="sortSelect" onchange="sortTable()" class="text-xs px-3 py-2 rounded-lg border border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white font-medium shadow-sm">
+                        <option value="default">Orden por Defecto</option>
+                        <option value="leads-desc">Mayor nº de Conversaciones</option>
+                        <option value="cost-asc">Menor Costo por Conversación (Mejor)</option>
+                        <option value="spend-desc">Mayor Presupuesto Gastado</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Tabla Responsive -->
+            <div class="overflow-x-auto rounded-xl border border-brand-200 shadow-sm">
+                <table class="w-full text-left text-xs border-collapse" id="adsTable">
+                    <thead>
+                        <tr class="bg-brand-900 text-white font-semibold">
+                            <th class="p-3">Nombre del Anuncio</th>
+                            <th class="p-3 text-center">Resultados (Chats)</th>
+                            <th class="p-3 text-right">Costo / Chat</th>
+                            <th class="p-3 text-right">Importe Gastado</th>
+                            <th class="p-3 text-center">Impresiones</th>
+                            <th class="p-3 text-center">Alcance</th>
+                            <th class="p-3 text-center">Finalización</th>
+                            <th class="p-3 text-center">Calidad</th>
+                            <th class="p-3 text-center">Interacción</th>
+                            <th class="p-3 text-center">Conversión</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-brand-100 bg-white" id="tableBody">
+                        
+                        <!-- Row 1: Soda frutos rojos (Ganador Absoluto) -->
+                        <tr class="hover:bg-sky-50 transition-colors bg-green-50/40" data-leads="47" data-cost="1880.53" data-spend="88385">
+                            <td class="p-3 font-semibold text-brand-950 max-w-xs">
+                                <span class="inline-block bg-whatsapp text-white text-[10px] px-1.5 py-0.5 rounded mr-1 font-bold shadow-sm">🏆 MEJOR ROI</span>
+                                El plan perfecto sí existe: soda de frutos rojos
+                            </td>
+                            <td class="p-3 text-center font-extrabold text-whatsapp-dark text-sm bg-green-100/60 rounded-lg">47</td>
+                            <td class="p-3 text-right font-bold text-whatsapp-dark">$1.880,53</td>
+                            <td class="p-3 text-right font-medium text-brand-800">$88.385</td>
+                            <td class="p-3 text-center font-mono text-brand-800">11.862</td>
+                            <td class="p-3 text-center font-mono text-brand-800">5.952</td>
+                            <td class="p-3 text-center text-brand-700">2026-07-24</td>
+                            <td class="p-3 text-center">
+                                <span class="bg-red-100 text-red-800 px-2 py-0.5 rounded text-[10px] font-medium" title="-35% de los anuncios menos relevantes">Bajo el promedio (-35%)</span>
+                            </td>
+                            <td class="p-3 text-center">
+                                <span class="bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px] font-bold">Por encima promedio</span>
+                            </td>
+                            <td class="p-3 text-center">
+                                <span class="bg-red-100 text-red-800 px-2 py-0.5 rounded text-[10px] font-medium" title="-35% de los anuncios menos relevantes">Bajo el promedio (-35%)</span>
+                            </td>
+                        </tr>
+
+                        <!-- Row 2: Montecristo + Milo -->
+                        <tr class="hover:bg-sky-50 transition-colors" data-leads="44" data-cost="2840.20" data-spend="124969">
+                            <td class="p-3 font-semibold text-brand-950 max-w-xs">
+                                <span class="inline-block bg-sky-200 text-brand-900 text-[10px] px-1.5 py-0.5 rounded mr-1 font-bold">🥈 TOP PRODUCTO</span>
+                                La fórmula de la felicidad en la tarde: Montecristo + Milo
+                            </td>
+                            <td class="p-3 text-center font-bold text-brand-950 text-sm">44</td>
+                            <td class="p-3 text-right font-bold text-emerald-700">$2.840,20</td>
+                            <td class="p-3 text-right font-medium text-brand-800">$124.969</td>
+                            <td class="p-3 text-center font-mono text-brand-800">14.554</td>
+                            <td class="p-3 text-center font-mono text-brand-800">6.048</td>
+                            <td class="p-3 text-center text-brand-700">2026-06-29</td>
+                            <td class="p-3 text-center">
+                                <span class="bg-sky-100 text-sky-900 px-2 py-0.5 rounded text-[10px]">Promedio</span>
+                            </td>
+                            <td class="p-3 text-center">
+                                <span class="bg-sky-100 text-sky-900 px-2 py-0.5 rounded text-[10px]">Promedio</span>
+                            </td>
+                            <td class="p-3 text-center">
+                                <span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px]">Bajo (-35%)</span>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3: Sabores que cuentan historias -->
+                        <tr class="hover:bg-sky-50 transition-colors" data-leads="35" data-cost="3562.86" data-spend="124700">
+                            <td class="p-3 font-semibold text-brand-950 max-w-xs">
+                                Sabores que cuentan historias, aromas que enamoran y momentos
+                            </td>
+                            <td class="p-3 text-center font-bold text-brand-950 text-sm">35</td>
+                            <td class="p-3 text-right font-medium text-brand-800">$3.562,86</td>
+                            <td class="p-3 text-right font-medium text-brand-800">$124.700</td>
+                            <td class="p-3 text-center font-mono text-brand-800">19.306</td>
+                            <td class="p-3 text-center font-mono text-brand-800">10.678</td>
+                            <td class="p-3 text-center text-brand-700">2026-06-23</td>
+                            <td class="p-3 text-center">
+                                <span class="bg-sky-100 text-sky-900 px-2 py-0.5 rounded text-[10px]">Promedio</span>
+                            </td>
+                            <td class="p-3 text-center">
+                                <span class="bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px] font-bold">Por encima promedio</span>
+                            </td>
+                            <td class="p-3 text-center">
+                                <span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px]">Bajo (-20%)</span>
+                            </td>
+                        </tr>
+
+                        <!-- Row 4: El mejor plan para alentar -->
+                        <tr class="hover:bg-sky-50 transition-colors" data-leads="32" data-cost="3835.47" data-spend="122735">
+                            <td class="p-3 font-semibold text-brand-950 max-w-xs">
+                                El mejor plan para alentar a nuestra
+                            </td>
+                            <td class="p-3 text-center font-bold text-brand-950 text-sm">32</td>
+                            <td class="p-3 text-right font-medium text-brand-800">$3.835,47</td>
+                            <td class="p-3 text-right font-medium text-brand-800">$122.735</td>
+                            <td class="p-3 text-center font-mono text-brand-800">19.629</td>
+                            <td class="p-3 text-center font-mono text-brand-800">8.839</td>
+                            <td class="p-3 text-center text-brand-700">2026-07-08</td>
+                            <td class="p-3 text-center">
+                                <span class="bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px] font-bold">Por encima promedio</span>
+                            </td>
+                            <td class="p-3 text-center">
+                                <span class="bg-sky-100 text-sky-900 px-2 py-0.5 rounded text-[10px]">Promedio</span>
+                            </td>
+                            <td class="p-3 text-center">
+                                <span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px]">Bajo (-35%)</span>
+                            </td>
+                        </tr>
+
+                        <!-- Row 5: Trabaja, crea y disfruta -->
+                        <tr class="hover:bg-sky-50 transition-colors" data-leads="31" data-cost="4026.39" data-spend="124818">
+                            <td class="p-3 font-semibold text-brand-950 max-w-xs">
+                                Trabaja, crea y disfruta
+                            </td>
+                            <td class="p-3 text-center font-bold text-brand-950 text-sm">31</td>
+                            <td class="p-3 text-right font-medium text-brand-800">$4.026,39</td>
+                            <td class="p-3 text-right font-medium text-brand-800">$124.818</td>
+                            <td class="p-3 text-center font-mono text-brand-800">12.163</td>
+                            <td class="p-3 text-center font-mono text-brand-800">5.326</td>
+                            <td class="p-3 text-center text-brand-700">2026-07-13</td>
+                            <td class="p-3 text-center">
+                                <span class="bg-sky-100 text-sky-900 px-2 py-0.5 rounded text-[10px]">Promedio</span>
+                            </td>
+                            <td class="p-3 text-center">
+                                <span class="bg-sky-100 text-sky-900 px-2 py-0.5 rounded text-[10px]">Promedio</span>
+                            </td>
+                            <td class="p-3 text-center">
+                                <span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px]">Bajo (-35%)</span>
+                            </td>
+                        </tr>
+
+                        <!-- Row 6: Quieres celebrar la vida -->
+                        <tr class="hover:bg-sky-50 transition-colors" data-leads="29" data-cost="4310.34" data-spend="125000">
+                            <td class="p-3 font-semibold text-brand-950 max-w-xs">
+                                Quieres celebrar la vida de una manera diferente
+                            </td>
+                            <td class="p-3 text-center font-bold text-brand-950 text-sm">29</td>
+                            <td class="p-3 text-right font-medium text-brand-800">$4.310,34</td>
+                            <td class="p-3 text-right font-medium text-brand-800">$125.000</td>
+                            <td class="p-3 text-center font-mono text-brand-800">12.166</td>
+                            <td class="p-3 text-center font-mono text-brand-800">6.022</td>
+                            <td class="p-3 text-center text-brand-700">2026-06-23</td>
+                            <td class="p-3 text-center">
+                                <span class="bg-sky-100 text-sky-900 px-2 py-0.5 rounded text-[10px]">Promedio</span>
+                            </td>
+                            <td class="p-3 text-center">
+                                <span class="bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px] font-bold">Por encima promedio</span>
+                            </td>
+                            <td class="p-3 text-center">
+                                <span class="bg-sky-100 text-sky-900 px-2 py-0.5 rounded text-[10px]">Promedio</span>
+                            </td>
+                        </tr>
+
+                        <!-- Row 7: El espacio perfecto para trabajar -->
+                        <tr class="hover:bg-sky-50 transition-colors bg-red-50/30" data-leads="23" data-cost="5009.39" data-spend="115216">
+                            <td class="p-3 font-semibold text-brand-950 max-w-xs">
+                                <span class="inline-block bg-red-100 text-red-800 text-[10px] px-1.5 py-0.5 rounded mr-1 font-bold">⚠️ MÁS COSTOSO</span>
+                                El espacio perfecto para trabajar, lo encuentras en G
+                            </td>
+                            <td class="p-3 text-center font-bold text-red-700 text-sm">23</td>
+                            <td class="p-3 text-right font-bold text-red-700">$5.009,39</td>
+                            <td class="p-3 text-right font-medium text-brand-800">$115.216</td>
+                            <td class="p-3 text-center font-mono text-brand-800">16.697</td>
+                            <td class="p-3 text-center font-mono text-brand-800">9.186</td>
+                            <td class="p-3 text-center text-brand-700">2026-06-08</td>
+                            <td class="p-3 text-center text-brand-400 font-mono">-</td>
+                            <td class="p-3 text-center text-brand-400 font-mono">-</td>
+                            <td class="p-3 text-center text-brand-400 font-mono">-</td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot class="bg-brand-100 font-bold text-brand-950 border-t-2 border-brand-300">
+                        <tr>
+                            <td class="p-3">TOTALES / PROMEDIOS DE CAMPAÑA</td>
+                            <td class="p-3 text-center text-whatsapp-dark font-extrabold text-sm">241 chats</td>
+                            <td class="p-3 text-right text-brand-950">$3.426,65 (prom.)</td>
+                            <td class="p-3 text-right text-brand-950">$825.823 COP</td>
+                            <td class="p-3 text-center font-mono">106.377</td>
+                            <td class="p-3 text-center font-mono">52.051</td>
+                            <td class="p-3 text-center text-xs text-brand-700">08 Jun - 24 Jul</td>
+                            <td colspan="3" class="p-3 text-center text-xs text-brand-700">Consolidado general G Café</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- ANÁLISIS ESTRATÉGICO Y HALLAZGOS CLAVE -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Card 1: Por qué funcionó tan bien la Soda de Frutos Rojos -->
+            <div class="glass-card rounded-2xl p-6 shadow-md border-t-4 border-t-whatsapp space-y-3">
+                <div class="flex items-center gap-2 text-whatsapp-dark font-serif font-bold text-lg">
+                    <i class="fa-solid fa-star text-amber-500"></i> ¿Por qué la "Soda de frutos rojos" fue el ganador absoluto?
+                </div>
+                <p class="text-xs text-brand-900 leading-relaxed">
+                    Con apenas <strong>$88.385 COP gastados</strong> (el presupuesto más bajo invertido), generó la mayor cantidad de conversaciones (<strong>47 clientes en WhatsApp</strong>).
+                </p>
+                <div class="space-y-2 pt-2 border-t border-brand-100">
+                    <div class="flex items-start gap-2 text-xs text-brand-800">
+                        <i class="fa-solid fa-circle-check text-whatsapp mt-0.5"></i>
+                        <span><strong>Costo hiper-eficiente:</strong> Obtuvo un CPR de <strong>$1.880,53 COP</strong>, siendo un 45% más económico que el promedio general ($3.427 COP).</span>
+                    </div>
+                    <div class="flex items-start gap-2 text-xs text-brand-800">
+                        <i class="fa-solid fa-circle-check text-whatsapp mt-0.5"></i>
+                        <span><strong>Antojo visual directo:</strong> Las bebidas refrescantes y frías generan un impulso directo en redes que invita inmediatamente a pedir precios y ubicación.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Comparativa Producto vs Concepto Espacio -->
+            <div class="glass-card rounded-2xl p-6 shadow-md border-t-4 border-t-brand-500 space-y-3">
+                <div class="flex items-center gap-2 text-brand-950 font-serif font-bold text-lg">
+                    <i class="fa-solid fa-lightbulb text-brand-500"></i> Hallazgo Clave: Menú Específico vs. Concepto Espacio
+                </div>
+                <p class="text-xs text-brand-900 leading-relaxed">
+                    Se evidencia un contraste claro en el costo de adquisición dependiendo del mensaje del anuncio:
+                </p>
+                <div class="space-y-2 pt-2 border-t border-brand-100">
+                    <div class="p-2.5 bg-green-50 rounded-lg border border-green-200 text-xs">
+                        <span class="font-bold text-green-900">🥤 Anuncios de Productos Concretos:</span>
+                        <p class="text-green-800 mt-0.5">Sodas de frutos rojos ($1.880 COP) y Montecristo + Milo ($2.840 COP) promedian <strong>$2.360 COP por cliente</strong>.</p>
+                    </div>
+                    <div class="p-2.5 bg-red-50 rounded-lg border border-red-200 text-xs">
+                        <span class="font-bold text-red-900">💻 Anuncios de Co-working / Espacio:</span>
+                        <p class="text-red-800 mt-0.5">"El espacio perfecto para trabajar" ($5.009 COP) y "Trabaja, crea y disfruta" ($4.026 COP) promedian <strong>$4.517 COP por cliente</strong> (casi el doble de costoso).</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- RECOMENDACIONES ESTRATÉGICAS Y PLAN DE ACCIÓN PARA G CAFÉ -->
+        <section class="glass-card rounded-2xl p-6 shadow-lg border border-brand-300 bg-gradient-to-br from-brand-900 via-brand-950 to-slate-900 text-white space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-brand-700 pb-4">
+                <div>
+                    <span class="text-xs uppercase font-bold text-sky-300 tracking-wider">Hoja de Ruta Estratégica</span>
+                    <h3 class="text-2xl font-serif font-bold text-white mt-1">
+                        Recomendaciones para la Siguiente Campaña de G Café
+                    </h3>
+                </div>
+                <div class="bg-sky-400 text-brand-950 font-bold text-xs px-3 py-1.5 rounded-full self-start md:self-auto shadow-sm">
+                    <i class="fa-solid fa-rocket mr-1"></i> Optimización Recomendada
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Recomendación 1 -->
+                <div class="bg-brand-900/80 p-5 rounded-xl border border-brand-700 space-y-2">
+                    <div class="w-8 h-8 rounded-lg bg-sky-400 text-brand-950 font-bold flex items-center justify-center text-sm">
+                        1
+                    </div>
+                    <h4 class="font-bold text-sky-200 text-sm">Reasignación hacia Productos Estrella</h4>
+                    <p class="text-xs text-brand-100 leading-relaxed">
+                        Destinar el 70% del presupuesto mensual a anuncios visuales enfocados en ítems específicos del menú (sodas preparadas, combos tipo Montecristo + Milo, repostería y cafés de especialidad).
+                    </p>
+                </div>
+
+                <!-- Recomendación 2 -->
+                <div class="bg-brand-900/80 p-5 rounded-xl border border-brand-700 space-y-2">
+                    <div class="w-8 h-8 rounded-lg bg-sky-400 text-brand-950 font-bold flex items-center justify-center text-sm">
+                        2
+                    </div>
+                    <h4 class="font-bold text-sky-200 text-sm">Rediseñar el Mensaje del Espacio de Trabajo</h4>
+                    <p class="text-xs text-brand-100 leading-relaxed">
+                        El anuncio <em>"El espacio perfecto para trabajar"</em> tuvo un costo elevado ($5.009 COP). En lugar de vender solo "el espacio", combínalo con un gancho: <em>"Ven a trabajar con WiFi de alta velocidad y recibe café americano refill"</em>.
+                    </p>
+                </div>
+
+                <!-- Recomendación 3 -->
+                <div class="bg-brand-900/80 p-5 rounded-xl border border-brand-700 space-y-2">
+                    <div class="w-8 h-8 rounded-lg bg-sky-400 text-brand-950 font-bold flex items-center justify-center text-sm">
+                        3
+                    </div>
+                    <h4 class="font-bold text-sky-200 text-sm">Respuesta Automática Rápida en WhatsApp</h4>
+                    <p class="text-xs text-brand-100 leading-relaxed">
+                        Al recibir 241 conversaciones, es crucial contar con un bot o plantilla interactiva en WhatsApp Business que envíe al instante la carta digital, ubicación en Google Maps y horarios para maximizar la conversión en visitas reales.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-brand-950 text-brand-300 text-xs py-8 border-t border-brand-800 mt-12 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div>
+                <p class="font-semibold text-brand-100">G CAFÉ - Reporte Estratégico de Performance Publicitaria</p>
+                <p class="text-[11px] text-brand-400 mt-0.5">Generado a partir de datos oficiales de Meta Ads Manager.</p>
+            </div>
+            <div class="flex items-center gap-4 text-brand-300">
+                <span><i class="fa-solid fa-mug-hot text-sky-400 mr-1"></i> G Café Marketing</span>
+                <span>•</span>
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="hover:text-white transition-colors">
+                    Volver arriba <i class="fa-solid fa-arrow-up ml-1"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Función para mostrar/ocultar tooltips informativos de métricas
+        function toggleTooltip(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.classList.toggle('hidden');
+            }
+        }
+
+        // Función para desplazar la pantalla a secciones específicas
+        function scrollToSection(id) {
+            const target = document.getElementById(id);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Datos del informe para los gráficos (en tonos azulados y verde de ganancia)
+        const adsData = [
+            { name: "Soda frutos rojos", leads: 47, cost: 1880.53, spend: 88385 },
+            { name: "Montecristo + Milo", leads: 44, cost: 2840.20, spend: 124969 },
+            { name: "Sabores & Aromas", leads: 35, cost: 3562.86, spend: 124700 },
+            { name: "Plan para alentar", leads: 32, cost: 3835.47, spend: 122735 },
+            { name: "Trabaja, crea, disfruta", leads: 31, cost: 4026.39, spend: 124818 },
+            { name: "Celebrar la vida", leads: 29, cost: 4310.34, spend: 125000 },
+            { name: "Espacio para trabajar", leads: 23, cost: 5009.39, spend: 115216 }
+        ];
+
+        // Inicialización de Gráficos al cargar la ventana
+        window.onload = function() {
+            // Chart 1: Conversiones (Leads)
+            const ctxLeads = document.getElementById('leadsChart').getContext('2d');
+            new Chart(ctxLeads, {
+                type: 'bar',
+                data: {
+                    labels: adsData.map(a => a.name),
+                    datasets: [{
+                        label: 'Conversaciones WhatsApp',
+                        data: adsData.map(a => a.leads),
+                        backgroundColor: [
+                            '#25D366', // Soda frutos rojos (Ganador en WhatsApp Green)
+                            '#0284C7', // Azul brillante
+                            '#0369A1',
+                            '#075985',
+                            '#0C4A6E',
+                            '#38BDF8',
+                            '#EF4444'  // Espacio trabajo (Alerta rojo)
+                        ],
+                        borderRadius: 6,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ` ${context.raw} chats en WhatsApp`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#E0F2FE' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+
+            // Chart 2: Costo por Resultado
+            const ctxCost = document.getElementById('costChart').getContext('2d');
+            new Chart(ctxCost, {
+                type: 'bar',
+                data: {
+                    labels: adsData.map(a => a.name),
+                    datasets: [{
+                        label: 'Costo por Chat (COP)',
+                        data: adsData.map(a => a.cost),
+                        backgroundColor: [
+                            '#10B981', // Menor costo (Verde esmeralda)
+                            '#38BDF8', // Azul cielo
+                            '#0EA5E9', 
+                            '#0284C7',
+                            '#0369A1',
+                            '#F59E0B', // Ámbar medio
+                            '#DC2626'  // Mayor costo (Rojo)
+                        ],
+                        borderRadius: 6,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ` $${Math.round(context.raw).toLocaleString('es-CO')} COP por cliente`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#E0F2FE' },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value;
+                                }
+                            }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        };
+
+        // Filtro de búsqueda en la tabla
+        function filterTable() {
+            const input = document.getElementById("tableSearch").value.toLowerCase();
+            const rows = document.querySelectorAll("#tableBody tr");
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(input) ? "" : "none";
+            });
+        }
+
+        // Ordenamiento dinámico de la tabla
+        function sortTable() {
+            const sortValue = document.getElementById("sortSelect").value;
+            const tbody = document.getElementById("tableBody");
+            const rows = Array.from(tbody.querySelectorAll("tr"));
+
+            if (sortValue === "default") {
+                location.reload();
+                return;
+            }
+
+            rows.sort((a, b) => {
+                const leadsA = parseInt(a.getAttribute("data-leads"));
+                const leadsB = parseInt(b.getAttribute("data-leads"));
+                const costA = parseFloat(a.getAttribute("data-cost"));
+                const costB = parseFloat(b.getAttribute("data-cost"));
+                const spendA = parseFloat(a.getAttribute("data-spend"));
+                const spendB = parseFloat(b.getAttribute("data-spend"));
+
+                if (sortValue === "leads-desc") return leadsB - leadsA;
+                if (sortValue === "cost-asc") return costA - costB;
+                if (sortValue === "spend-desc") return spendB - spendA;
+                return 0;
+            });
+
+            rows.forEach(row => tbody.appendChild(row));
+        }
+    </script>
+</body>
+</html>
